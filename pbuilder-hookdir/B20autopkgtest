@@ -60,15 +60,15 @@ if ! which autopkgtest > /dev/null ; then
   $newpid_name adt-run \
   ${OUTPUT_OPTION} /tmp/buildd/autopkgtest.out \
   --summary /tmp/buildd/autopkgtest.summary \
-  /tmp/buildd/*/ \
+  /build/*/ \
   --built-tree "${PWD}" \
   ${ADT_OPTIONS:-} --- adt-virt-null || EXIT=$?
 else 
   $newpid_name autopkgtest \
   -output-dir /tmp/buildd/autopkgtest.out \
   --summary-file /tmp/buildd/autopkgtest.summary \
-  /tmp/buildd/*/ \
-  --- null || EXIT=$?
+  /build/*/ \
+  -- null || EXIT=$?
 fi
 
 # collect autopkgtest output in a single file so pbuilder automatically copies it
